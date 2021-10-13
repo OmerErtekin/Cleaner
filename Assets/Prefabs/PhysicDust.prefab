@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5043112943177472874}
   m_Layer: 0
   m_Name: PhysicDust
-  m_TagString: Stick
+  m_TagString: DustBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

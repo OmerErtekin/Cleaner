@@ -31,7 +31,11 @@ public class DustController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            StartCoroutine(SicorCut(3));
+            StartCoroutine(ElectricShock(3));
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            StartCoroutine(ScissorsCut(dustStartPosition.GetChild(3).gameObject));
         }
     }
 
@@ -49,7 +53,7 @@ public class DustController : MonoBehaviour
         GameObject visualPart = dustStartPosition.GetChild(dustStartPosition.childCount - 1).GetChild(0).gameObject;
         Destroy(visualPart.GetComponent<Dust>());
         visualPart.transform.parent = null;
-        visualPart.AddComponent<Rigidbody>();
+        visualPart.AddComponent<Rigidbody>().AddForce(0, 0, -200);
         visualPart.AddComponent<BoxCollider>();
         Destroy(visualPart, 5);
     }
@@ -72,7 +76,7 @@ public class DustController : MonoBehaviour
         }
     }
 
-    public IEnumerator SicorCut(int count)
+    public IEnumerator ElectricShock(int count)
     {
         if(dustCount != 0)
         {
@@ -94,6 +98,18 @@ public class DustController : MonoBehaviour
         else
         {
             //GameOver
+        }
+    }
+
+    public IEnumerator ScissorsCut(GameObject collidedBlock)
+    {
+        int iterationCount = dustStartPosition.childCount - collidedBlock.transform.GetSiblingIndex();
+        if (iterationCount <= 0)
+            yield break;
+        for(int i = 0;i<iterationCount;i++)
+        {
+            yield return new WaitForEndOfFrame();
+            RemoveDust();
         }
     }
 }

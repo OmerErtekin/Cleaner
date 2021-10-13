@@ -19,7 +19,7 @@ public class Dust : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Stick") && !isTaken)
+        if((other.gameObject.CompareTag("Stick") || other.gameObject.CompareTag("DustBlock")) && !isTaken)
         {
             StartCoroutine(SetDustSettings());
         }

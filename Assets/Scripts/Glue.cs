@@ -12,12 +12,13 @@ public class Glue : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if(other.gameObject.CompareTag("DustBlock"))
+        {
+             dustControllerScript.RemoveDust();
+        }
         if(other.gameObject.CompareTag("Stick"))
         {
-            if(dustControllerScript.dustCount != 0)
-                dustControllerScript.RemoveDust();
-            //else
-                //Game over
+            //Game over
         }
     }
 }
