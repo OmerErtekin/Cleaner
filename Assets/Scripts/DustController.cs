@@ -29,6 +29,10 @@ public class DustController : MonoBehaviour
         {
             RemoveDust();
         }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartCoroutine(SicorCut(3));
+        }
     }
 
     IEnumerator AddPyhsicalDust()
@@ -65,6 +69,31 @@ public class DustController : MonoBehaviour
         else
         {
             //Game over
+        }
+    }
+
+    public IEnumerator SicorCut(int count)
+    {
+        if(dustCount != 0)
+        {
+            int iterationCount;
+            if (dustCount > count)
+            {
+                iterationCount = count;
+            }
+            else
+            {
+                iterationCount = dustCount;
+            }
+            for (int i = 0; i < iterationCount; i++)
+            {
+                yield return new WaitForSeconds(0.1f);
+                RemoveDust();
+            }
+        }
+        else
+        {
+            //GameOver
         }
     }
 }
