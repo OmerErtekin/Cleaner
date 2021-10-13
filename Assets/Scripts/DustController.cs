@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DustController : MonoBehaviour
 {
+    [HideInInspector]public int dustCount = 0;
     public GameObject dustObject;
-    private Rigidbody stickRb;
     public Transform dustStartPosition;
-    public int dustCount = 0;
     public static DustController dustControllerScript;
+    private Rigidbody stickRb;
 
     void Awake()
     {
@@ -41,8 +41,7 @@ public class DustController : MonoBehaviour
 
     IEnumerator AddPyhsicalDust()
     {
-        if(stickRb.velocity.y < 0.5f)
-            stickRb.AddForce(0, 100, 0);
+        stickRb.AddForce(0, 100, 0);
         dustCount++;
         yield return new WaitForEndOfFrame();
         Instantiate(dustObject, dustStartPosition.position - new Vector3(0, 0.1f * dustCount, 0), transform.rotation,dustStartPosition);
@@ -50,6 +49,8 @@ public class DustController : MonoBehaviour
 
     void DropVisualPart()
     {
+        if (dustStartPosition.childCount == 0)
+            return;
         GameObject visualPart = dustStartPosition.GetChild(dustStartPosition.childCount - 1).GetChild(0).gameObject;
         Destroy(visualPart.GetComponent<Dust>());
         visualPart.transform.parent = null;

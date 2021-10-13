@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 
 public class StickMovement : MonoBehaviour
 {
-    private float lastFrameFingerPositionX, moveFactorX;
+    public PathCreator pathScript;
+    private float lastFrameFingerPositionX, moveFactorX,distanceTravelled;
     public float swerveSpeed = 50, maxSwerveAmount = 10,movementSpeed = 10;
-    private Rigidbody stickRb;
+    private GameObject stickObject;
     void Start()
     {
-        stickRb = GetComponent<Rigidbody>();
+        stickObject = transform.GetChild(0).gameObject;
     }
 
     void Update()
     {
         HandleInput();
         HandleMovement();
+
     }
 
 
@@ -39,11 +42,15 @@ public class StickMovement : MonoBehaviour
     void HandleMovement()
     {
         //Movement part
-        stickRb.velocity = new Vector3(stickRb.velocity.x, stickRb.velocity.y, movementSpeed);
+        distanceTravelled += Time.deltaTime * movementSpeed;
+        transform.SetPositionAndRotation(pathScript.path.GetPointAtDistance(distanceTravelled) + new Vector3(0, 3f, 0),
+            Quaternion.Euler(transform.rotation.eulerAngles.x,pathScript.path.GetRotationAtDistance(distanceTravelled).eulerAngles.y,transform.rotation.eulerAngles.z));
+
         //Swerve part
         float swerveAmount = Time.fixedDeltaTime * swerveSpeed * moveFactorX;
         swerveAmount = Mathf.Clamp(swerveAmount, -maxSwerveAmount, maxSwerveAmount);
         var smoothSwerveAmount = Mathf.Lerp(0, swerveAmount, 0.125f);
-        transform.Translate(smoothSwerveAmount, 0, 0);
+        if((smoothSwerveAmount < 0 && stickObject.transform.localPosition.x > -2) || smoothSwerveAmount > 0 && stickObject.transform.localPosition.x < 2)
+            stickObject.transform.localPosition += new Vector3(smoothSwerveAmount, 0, 0);
     }
 }
