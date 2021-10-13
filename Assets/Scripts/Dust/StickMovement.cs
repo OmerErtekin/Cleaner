@@ -42,7 +42,8 @@ public class StickMovement : MonoBehaviour
     void HandleMovement()
     {
         //Movement part
-        distanceTravelled += Time.deltaTime * movementSpeed;
+        if(pathScript.path.length > distanceTravelled + 0.1f)
+            distanceTravelled += Time.deltaTime * movementSpeed;
         transform.SetPositionAndRotation(pathScript.path.GetPointAtDistance(distanceTravelled) + new Vector3(0, 3f, 0),
             Quaternion.Euler(transform.rotation.eulerAngles.x,pathScript.path.GetRotationAtDistance(distanceTravelled).eulerAngles.y,transform.rotation.eulerAngles.z));
 

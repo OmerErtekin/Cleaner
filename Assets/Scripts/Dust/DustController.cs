@@ -54,6 +54,7 @@ public class DustController : MonoBehaviour
         GameObject visualPart = dustStartPosition.GetChild(dustStartPosition.childCount - 1).GetChild(0).gameObject;
         Destroy(visualPart.GetComponent<Dust>());
         visualPart.transform.parent = null;
+        visualPart.tag = "Untagged";
         visualPart.AddComponent<Rigidbody>().AddForce(0, 0, -200);
         visualPart.AddComponent<BoxCollider>();
         Destroy(visualPart, 5);
