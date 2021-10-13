@@ -18,12 +18,12 @@ public class StickMovement : MonoBehaviour
     {
         HandleInput();
         HandleMovement();
-
     }
 
 
     void HandleInput()
     {
+        //Precise a point to start the swerve movement
         if (Input.GetMouseButtonDown(0))
         {
             lastFrameFingerPositionX = Input.mousePosition.x;

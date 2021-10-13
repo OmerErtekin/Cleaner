@@ -13,6 +13,7 @@ public class Scissors : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //A scissors cut can cut the dust from touched dust to last dust
         if (other.gameObject.CompareTag("DustBlock") && !isCut)
         {
             isCut = true;

@@ -41,6 +41,7 @@ public class DustController : MonoBehaviour
 
     IEnumerator AddPyhsicalDust()
     {
+        //Physical dust is a collider object which will collide with other dusts and obstacles.Also it increases the height of the stick.
         stickRb.AddForce(0, 100, 0);
         dustCount++;
         yield return new WaitForEndOfFrame();
@@ -49,6 +50,7 @@ public class DustController : MonoBehaviour
 
     void DropVisualPart()
     {
+        //Visual part is the dust models. Wheb droping any dust, first we need to drop visual part which is connected to physical dust.
         if (dustStartPosition.childCount == 0)
             return;
         GameObject visualPart = dustStartPosition.GetChild(dustStartPosition.childCount - 1).GetChild(0).gameObject;
@@ -66,6 +68,7 @@ public class DustController : MonoBehaviour
     }
     public void RemoveDust()
     {
+        //First, remove the visual part, after destroy the pyhsical part.
         if (dustStartPosition.childCount != 0)
         {
             DropVisualPart();
@@ -80,6 +83,7 @@ public class DustController : MonoBehaviour
 
     public IEnumerator ElectricShock(int count)
     {
+        //Electric schock is removing our dust for count time (if we don't have enough dust, it will remove as more as it could.
         if(dustCount != 0)
         {
             int iterationCount;
@@ -105,6 +109,7 @@ public class DustController : MonoBehaviour
 
     public IEnumerator ScissorsCut(GameObject collidedBlock)
     {
+        //A scissors can cut the object from touched part to last dust part.
         int iterationCount = dustStartPosition.childCount - collidedBlock.transform.GetSiblingIndex();
         if (iterationCount <= 0)
             yield break;

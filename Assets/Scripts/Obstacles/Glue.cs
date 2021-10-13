@@ -12,6 +12,7 @@ public class Glue : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //A glue remove the dust block that it collided. If there isn't any block, than game will be over.
         if(other.gameObject.CompareTag("DustBlock"))
         {
              dustControllerScript.RemoveDust();
