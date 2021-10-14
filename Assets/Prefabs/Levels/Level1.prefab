@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4014631456132047874}
-  m_LocalRotation: {x: 0.012562225, y: 0.14341493, z: -0.00027836452, w: 0.98958284}
+  m_LocalRotation: {x: 0.012562226, y: 0.14341494, z: -0.00027836455, w: 0.9895829}
   m_LocalPosition: {x: 35.95, y: -0.07, z: 58.59}
-  m_LocalScale: {x: 26.59014, y: 0.13135, z: 4.0155}
+  m_LocalScale: {x: 26.590141, y: 0.13134997, z: 4.0155}
   m_Children: []
   m_Father: {fileID: 5783623689358594962}
   m_RootOrder: 2
@@ -1274,9 +1274,9 @@ MonoBehaviour:
       - {x: 0, y: 0, z: 11.297699}
       - {x: 0, y: 0, z: 11.384529}
       - {x: 0, y: 0, z: 11.87265}
-      - {x: -0.16098642, y: 0, z: 59.69592}
+      - {x: -0.013304234, y: 0, z: 59.696945}
       - {x: 0, y: 0, z: 60.19666}
-      - {x: 2.1347513, y: 0, z: 66.83669}
+      - {x: 0.18562774, y: 0, z: 67.16893}
       - {x: 6.460889, y: 0, z: 65.11564}
       - {x: 8.702798, y: 0, z: 64.96474}
       - {x: 16.34956, y: 0, z: 64.450035}
@@ -1316,7 +1316,7 @@ MonoBehaviour:
     keepConstantHandleSize: 0
     showNormalsInVertexMode: 0
     showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
+    showDisplayOptions: 1
     showPathOptions: 1
     showVertexPathDisplayOptions: 0
     showVertexPathOptions: 1
