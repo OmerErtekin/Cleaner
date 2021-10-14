@@ -5,19 +5,29 @@ using PathCreation;
 
 public class StickMovement : MonoBehaviour
 {
+    public bool isCameToFinish = false,isGameFinished = false,isGameStarted = false;
     public PathCreator pathScript;
     private float lastFrameFingerPositionX, moveFactorX,distanceTravelled;
     public float swerveSpeed = 50, maxSwerveAmount = 10,movementSpeed = 10;
     private GameObject stickObject;
+    private Rigidbody stickRb;
+    public static StickMovement movementScript;
+
+    private void Awake()
+    {
+        movementScript = this;
+    }
     void Start()
     {
         stickObject = transform.GetChild(0).gameObject;
+        stickRb = stickObject.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         HandleInput();
         HandleMovement();
+        FinishMove();
     }
 
 
@@ -41,6 +51,9 @@ public class StickMovement : MonoBehaviour
 
     void HandleMovement()
     {
+        if (isCameToFinish || isGameFinished || !isGameStarted)
+            return;
+
         //Movement part
         if(pathScript.path.length > distanceTravelled + 0.1f)
             distanceTravelled += Time.deltaTime * movementSpeed;
@@ -53,5 +66,17 @@ public class StickMovement : MonoBehaviour
         var smoothSwerveAmount = Mathf.Lerp(0, swerveAmount, 0.125f);
         if((smoothSwerveAmount < 0 && stickObject.transform.localPosition.x > -2) || smoothSwerveAmount > 0 && stickObject.transform.localPosition.x < 2)
             stickObject.transform.localPosition += new Vector3(smoothSwerveAmount, 0, 0);
+    }
+
+    private void FinishMove()
+    {
+        if(isCameToFinish && !isGameFinished)
+            stickRb.velocity = movementSpeed * transform.forward;
+    }
+
+    public void StopTheStick()
+    {
+        isGameFinished = true;
+        stickRb.velocity = Vector3.zero;
     }
 }

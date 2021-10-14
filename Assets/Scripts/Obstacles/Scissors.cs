@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Scissors : MonoBehaviour
 {
-    DustController controllerScript;
-    bool isCut = false;
+    private GameManager managerScript;
+    private DustController controllerScript;
+    private bool isCut = false;
+   
     void Start()
     {
+        managerScript = GameManager.managerScript;
         controllerScript = DustController.dustControllerScript;
     }
 
@@ -18,6 +21,11 @@ public class Scissors : MonoBehaviour
         {
             isCut = true;
             StartCoroutine(controllerScript.ScissorsCut(other.gameObject));
+        }
+        if(other.gameObject.CompareTag("Stick") && !isCut)
+        {
+            isCut = true;
+            managerScript.FinishTheGame();
         }
     }
 }

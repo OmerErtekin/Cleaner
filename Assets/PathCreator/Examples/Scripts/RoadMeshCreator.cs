@@ -22,6 +22,7 @@ namespace PathCreation.Examples {
         MeshRenderer meshRenderer;
         Mesh mesh;
 
+
         protected override void PathUpdated () {
             if (pathCreator != null) {
                 AssignMeshComponents ();

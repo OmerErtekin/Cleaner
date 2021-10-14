@@ -9,6 +9,8 @@ public class DustController : MonoBehaviour
     public Transform dustStartPosition;
     public static DustController dustControllerScript;
     private Rigidbody stickRb;
+    private GameManager managerScript;
+    private StickMovement movementScript;
 
     void Awake()
     {
@@ -17,27 +19,11 @@ public class DustController : MonoBehaviour
     void Start()
     {
         stickRb = GetComponent<Rigidbody>();
+        managerScript = GameManager.managerScript;
+        movementScript = StickMovement.movementScript;
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            AddDust();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RemoveDust();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            StartCoroutine(ElectricShock(3));
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            StartCoroutine(ScissorsCut(dustStartPosition.GetChild(3).gameObject));
-        }
-    }
+
 
     IEnumerator AddPyhsicalDust()
     {
@@ -74,10 +60,13 @@ public class DustController : MonoBehaviour
             DropVisualPart();
             Destroy(dustStartPosition.GetChild(dustStartPosition.childCount-1).gameObject);
             dustCount--;
+            //Adding extra force to stick for faster finish
+            if (movementScript.isCameToFinish)
+                stickRb.AddForce(0, -300, 0);
         }
         else
         {
-            //Game over
+            StartCoroutine(managerScript.FinishTheGame());
         }
     }
 
@@ -103,7 +92,7 @@ public class DustController : MonoBehaviour
         }
         else
         {
-            //GameOver
+            StartCoroutine(managerScript.FinishTheGame());
         }
     }
 

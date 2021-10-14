@@ -29,6 +29,7 @@ public class Dust : MonoBehaviour
     {
         isTaken = true;
         dustControllerScipt.AddDust();
+        Destroy(GetComponent<Collider>());
         yield return new WaitForEndOfFrame();
         transform.rotation = Quaternion.Euler(0, dustControllerScipt.dustCount * 30, 0);
         transform.parent = dustControllerScipt.dustStartPosition.GetChild(dustControllerScipt.dustCount-1);

@@ -6,6 +6,7 @@ public class GeneralUI : MonoBehaviour
 { 
     public static GeneralUI uiScript;
     public GameObject uiTapToPlay, uiGame, uiCompleted, uiFailed;
+    private StickMovement movementScript;
 
     void Awake()
     {
@@ -14,6 +15,7 @@ public class GeneralUI : MonoBehaviour
     void Start()
     {
         StartCoroutine(SetUIAtStart());
+        movementScript = StickMovement.movementScript;
     }
 
     void Update()
@@ -25,10 +27,12 @@ public class GeneralUI : MonoBehaviour
     {
         uiTapToPlay.SetActive(true);
         yield return new WaitForEndOfFrame();
+        movementScript.isGameStarted = false;
         Time.timeScale = 0;
     }
     public void TapToPlay()
     {
+        movementScript.isGameStarted = true;
         uiTapToPlay.SetActive(false);
         Time.timeScale = 1;
         uiGame.SetActive(true);
@@ -37,12 +41,13 @@ public class GeneralUI : MonoBehaviour
     public void LevelCompleted()
     {
         uiGame.SetActive(false);
-        uiCompleted.SetActive(false);
+        uiCompleted.SetActive(true);
     }
 
     public void LevelFailed()
     {
         uiGame.SetActive(false);
-        uiGame.SetActive(true);
+        uiFailed.SetActive(true);
     }
+
 }

@@ -5,9 +5,11 @@ using UnityEngine;
 public class Glue : MonoBehaviour
 {
     private DustController dustControllerScript;
+    private GameManager managerScript;
 
     private void Start()
     {
+        managerScript = GameManager.managerScript;
         dustControllerScript = DustController.dustControllerScript;
     }
     private void OnTriggerEnter(Collider other)
@@ -19,7 +21,7 @@ public class Glue : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Stick"))
         {
-            //Game over
+            StartCoroutine(managerScript.FinishTheGame());
         }
     }
 }

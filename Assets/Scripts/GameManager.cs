@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager managerScript;
     public GameObject levels;
+    private StickMovement movementScript;
+    private GeneralUI uiScript;
     void Awake()
     {
         managerScript = this;    
@@ -13,6 +15,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SetLevelAtStart();
+        movementScript = StickMovement.movementScript;
+        uiScript = GeneralUI.uiScript;
     }
     private void Update()
     {
@@ -28,21 +32,32 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Level", 0);
         }
-        for(int i = 0;i<levels.transform.childCount;i++)
-        {
-             levels.transform.GetChild(i).gameObject.SetActive(false);
-        }
         levels.transform.GetChild(PlayerPrefs.GetInt("Level")).gameObject.SetActive(true);
     }
 
     public void NextLevel()
     {
         PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
-        SetLevelAtStart();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public IEnumerator FinishTheGame()
+    {        
+        if (movementScript.isCameToFinish)
+        {
+            yield return new WaitForSeconds(0.5f);
+            movementScript.StopTheStick();
+            uiScript.LevelCompleted();
+        }
+        else
+        {
+            movementScript.StopTheStick();
+            uiScript.LevelFailed();
+        }
     }
 }
