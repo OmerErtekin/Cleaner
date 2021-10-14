@@ -32,12 +32,17 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Level", 0);
         }
+        if(PlayerPrefs.GetInt("LevelNo") == 0)
+        {
+            PlayerPrefs.SetInt("LevelNo", 1);
+        }
         levels.transform.GetChild(PlayerPrefs.GetInt("Level")).gameObject.SetActive(true);
     }
 
     public void NextLevel()
     {
         PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        PlayerPrefs.SetInt("LevelNo", PlayerPrefs.GetInt("LevelNo") + 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
