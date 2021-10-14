@@ -55,19 +55,12 @@ public class DustController : MonoBehaviour
     public void RemoveDust()
     {
         //First, remove the visual part, after destroy the pyhsical part.
-        if (dustStartPosition.childCount != 0)
-        {
-            DropVisualPart();
-            Destroy(dustStartPosition.GetChild(dustStartPosition.childCount-1).gameObject);
-            dustCount--;
-            //Adding extra force to stick for faster finish
-            if (movementScript.isCameToFinish)
-                stickRb.AddForce(0, -300, 0);
-        }
-        else
-        {
-            StartCoroutine(managerScript.FinishTheGame());
-        }
+        DropVisualPart();
+        Destroy(dustStartPosition.GetChild(dustStartPosition.childCount-1).gameObject);
+        //Adding extra force to stick for faster finish
+        if (movementScript.isCameToFinish)
+            stickRb.AddForce(0, -300, 0);
+        dustCount--;
     }
 
     public IEnumerator ElectricShock(int count)
@@ -92,7 +85,7 @@ public class DustController : MonoBehaviour
         }
         else
         {
-            StartCoroutine(managerScript.FinishTheGame());
+            managerScript.FinishTheGame();
         }
     }
 

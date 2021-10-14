@@ -46,17 +46,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public IEnumerator FinishTheGame()
-    {        
+    public void FinishTheGame()
+    {
+        movementScript.isGameFinished = true;
         if (movementScript.isCameToFinish)
         {
-            yield return new WaitForSeconds(0.5f);
-            movementScript.StopTheStick();
             uiScript.LevelCompleted();
         }
         else
         {
-            movementScript.StopTheStick();
             uiScript.LevelFailed();
         }
     }

@@ -21,7 +21,7 @@ public class Glue : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Stick"))
         {
-            StartCoroutine(managerScript.FinishTheGame());
+            managerScript.FinishTheGame();
         }
     }
 }
