@@ -17,7 +17,6 @@ public class GeneralUI : MonoBehaviour
     void Start()
     {
         StartCoroutine(SetUIAtStart());
-        movementScript = StickMovement.movementScript;
     }
 
     void Update()
@@ -30,6 +29,7 @@ public class GeneralUI : MonoBehaviour
         uiTapToPlay.SetActive(true);
         tapLevelText.text = "Level " + PlayerPrefs.GetInt("LevelNo").ToString();
         yield return new WaitForEndOfFrame();
+        movementScript = StickMovement.movementScript;
         movementScript.isGameStarted = false;
         Time.timeScale = 0;
     }
