@@ -59,7 +59,7 @@ public class StickMovement : MonoBehaviour
         if (pathScript.path.length > distanceTravelled)
         {
             distanceTravelled += Time.deltaTime * movementSpeed;
-            transform.SetPositionAndRotation(pathScript.path.GetPointAtDistance(distanceTravelled) + new Vector3(0, 3f, 0),
+            transform.SetPositionAndRotation(pathScript.path.GetPointAtDistance(distanceTravelled) + new Vector3(0, 1f, 0),
                 Quaternion.Euler(transform.rotation.eulerAngles.x, pathScript.path.GetRotationAtDistance(distanceTravelled).eulerAngles.y, transform.rotation.eulerAngles.z));
         }
 
