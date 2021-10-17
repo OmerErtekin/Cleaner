@@ -77,6 +77,7 @@ MonoBehaviour:
   isCameToFinish: 0
   isGameFinished: 0
   isGameStarted: 0
+  isCollidingWithPhone: 0
   pathScript: {fileID: 0}
   swerveSpeed: 10
   maxSwerveAmount: 3

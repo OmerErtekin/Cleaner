@@ -5,7 +5,7 @@ using PathCreation;
 
 public class StickMovement : MonoBehaviour
 {
-    public bool isCameToFinish = false,isGameFinished = false,isGameStarted = false;
+    public bool isCameToFinish = false, isGameFinished = false, isGameStarted = false, isCollidingWithPhone = false;
     public PathCreator pathScript;
     private float lastFrameFingerPositionX, moveFactorX,distanceTravelled;
     public float swerveSpeed = 50, maxSwerveAmount = 10,movementSpeed = 10;
@@ -74,27 +74,26 @@ public class StickMovement : MonoBehaviour
 
     private void FinishMove()
     {
+        //For simulate the gravity, vector (0,-1,0) added
         if (isCameToFinish && !isGameFinished)
             stickRb.velocity = (movementSpeed * transform.forward) + new Vector3(0, -1, 0);
     }
 
     private void CatchTheParent()
     {
-        if (isGameFinished || isCameToFinish)
+        // If the position difference between parent and stick is too high, stick is accerelating a little and catch the parent
+        if (isGameFinished || isCameToFinish || isCollidingWithPhone)
             return; 
         if(stickObject.transform.localPosition.z < 0)
         {
-             stickRb.velocity = movementSpeed * stickObject.transform.forward + new Vector3(0, -1, 0);
-        }
-        else
-        {
-            stickRb.velocity = new Vector3(stickRb.velocity.x,stickRb.velocity.y,0);
+            stickObject.transform.localPosition += new Vector3(0, 0, 1f) * Time.deltaTime;
         }
 
     }
 
     void DecreaseSpeed()
     {
+        //Changing speed at finish for smoother experience
         if(isGameFinished)
         {
             movementSpeed = Mathf.Lerp(movementSpeed, 0, 3 * Time.deltaTime);
