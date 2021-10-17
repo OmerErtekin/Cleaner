@@ -29,6 +29,7 @@ public class StickMovement : MonoBehaviour
         HandleMovement();
         FinishMove();
         DecreaseSpeed();
+        CatchTheParent();
     }
 
 
@@ -74,9 +75,23 @@ public class StickMovement : MonoBehaviour
     private void FinishMove()
     {
         if (isCameToFinish && !isGameFinished)
-            stickRb.velocity = (movementSpeed * transform.forward);
+            stickRb.velocity = (movementSpeed * transform.forward) + new Vector3(0, -1, 0);
     }
 
+    private void CatchTheParent()
+    {
+        if (isGameFinished || isCameToFinish)
+            return; 
+        if(stickObject.transform.localPosition.z < 0)
+        {
+             stickRb.velocity = movementSpeed * stickObject.transform.forward + new Vector3(0, -1, 0);
+        }
+        else
+        {
+            stickRb.velocity = new Vector3(stickRb.velocity.x,stickRb.velocity.y,0);
+        }
+
+    }
 
     void DecreaseSpeed()
     {

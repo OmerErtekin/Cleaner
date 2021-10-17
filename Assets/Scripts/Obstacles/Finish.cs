@@ -22,16 +22,10 @@ public class Finish : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("DustBlock"))
+        if (other.gameObject.CompareTag("DustBlock") || other.gameObject.CompareTag("Stick"))
         {
             isCame = true;
             movementScript.isCameToFinish = true;
-        }
-
-        if (other.gameObject.CompareTag("Stick"))
-        {
-            movementScript.isCameToFinish = true;
-            managerScript.FinishTheGame();
         }
     }
 
@@ -40,8 +34,13 @@ public class Finish : MonoBehaviour
     {
         if (isCame && dustScript.dustCount != 0 && Time.time > lastDropTime)
         {
-            lastDropTime = Time.time + 0.15f;
+            lastDropTime = Time.time + 0.2f;
             dustScript.RemoveDust();
+        }
+        else if(isCame && dustScript.dustCount == 0 && Time.time > lastDropTime)
+        {
+            movementScript.isCameToFinish = true;
+            managerScript.FinishTheGame();
         }
     }
 
