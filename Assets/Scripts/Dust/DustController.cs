@@ -37,7 +37,7 @@ public class DustController : MonoBehaviour
     void DropVisualPart()
     {
         //Visual part is the dust models. When droping any dust, first we need to drop visual part which is connected to physical dust.
-        if (dustStartPosition.childCount == 0)
+        if (dustStartPosition.childCount == 0 || movementScript.isGameFinished)
             return;
         GameObject visualPart = dustStartPosition.GetChild(dustStartPosition.childCount - 1).GetChild(0).gameObject;
         Destroy(visualPart.GetComponent<Dust>());

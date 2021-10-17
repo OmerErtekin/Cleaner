@@ -6,12 +6,19 @@ public class Scissors : MonoBehaviour
 {
     private GameManager managerScript;
     private DustController controllerScript;
-    private bool isCut = false;
+    private bool isCut = false,isClosing = false;
+    public GameObject stickA, stickB;
+    private float lastCloseTime = 0;
    
     void Start()
     {
         managerScript = GameManager.managerScript;
         controllerScript = DustController.dustControllerScript;
+    }
+
+    void Update()
+    {
+        OpenAndClose();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,6 +33,29 @@ public class Scissors : MonoBehaviour
         {
             isCut = true;
             StartCoroutine(controllerScript.ScissorsCut(other.gameObject));
+        }
+    }
+
+    void OpenAndClose()
+    {
+        if(Time.time > lastCloseTime)
+        {
+            if (isClosing)
+                lastCloseTime = Time.time + 0.25f;
+            else
+                lastCloseTime = Time.time + 0.75f;
+
+            isClosing = !isClosing;
+        }
+        if (!isClosing)
+        {
+            stickA.transform.Rotate(0, -240 * Time.deltaTime, 0);
+            stickB.transform.Rotate(0, 240 * Time.deltaTime, 0);
+        }
+        else
+        {
+            stickA.transform.Rotate(0, 80 * Time.deltaTime, 0);
+            stickB.transform.Rotate(0, -80 * Time.deltaTime, 0);
         }
     }
 }
