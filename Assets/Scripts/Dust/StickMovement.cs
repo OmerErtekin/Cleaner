@@ -7,7 +7,7 @@ public class StickMovement : MonoBehaviour
 {
     public bool isCameToFinish = false, isGameFinished = false, isGameStarted = false, isCollidingWithPhone = false;
     public PathCreator pathScript;
-    private float lastFrameFingerPositionX, moveFactorX,distanceTravelled;
+    private float lastFrameFingerPositionX, moveFactorX, distanceTravelled;
     public float swerveSpeed = 50, maxSwerveAmount = 10,movementSpeed = 10;
     private GameObject stickObject;
     private Rigidbody stickRb;
@@ -100,4 +100,6 @@ public class StickMovement : MonoBehaviour
             stickRb.velocity = (movementSpeed * transform.forward);
         }
     }
+
+
 }

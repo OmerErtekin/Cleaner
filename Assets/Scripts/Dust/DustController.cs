@@ -76,7 +76,7 @@ public class DustController : MonoBehaviour
             }
             for (int i = 0; i < iterationCount; i++)
             {
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForEndOfFrame();
                 RemoveDust();
             }
         }
