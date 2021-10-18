@@ -16,17 +16,11 @@ public class Socket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("DustBlock") && !isShocked)
+        if((other.gameObject.CompareTag("DustBlock") || other.gameObject.CompareTag("Stick")) && !isShocked)
         {
             isShocked = true;
             Instantiate(shockEffect, other.gameObject.transform.position + new Vector3(0,1,0), transform.rotation);
-            StartCoroutine(dustScript.ElectricShock(1));
-        }
-        else if(other.gameObject.CompareTag("Stick") && !isShocked)
-        {
-            isShocked = true;
-            Instantiate(shockEffect, other.gameObject.transform.position, transform.rotation);
-            managerScript.FinishTheGame();
+            StartCoroutine(dustScript.MultipleCut(1));
         }
     }
 }

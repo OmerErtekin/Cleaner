@@ -60,7 +60,7 @@ public class DustController : MonoBehaviour
         dustCount--;
     }
 
-    public IEnumerator ElectricShock(int count)
+    public IEnumerator MultipleCut(int count)
     {
         //Electric schock is removing our dust for count time (if we don't have enough dust, it will remove as more as it could.
         if(dustCount != 0)
@@ -76,8 +76,8 @@ public class DustController : MonoBehaviour
             }
             for (int i = 0; i < iterationCount; i++)
             {
-                yield return new WaitForEndOfFrame();
                 RemoveDust();
+                yield return new WaitForSeconds(0.1f);
             }
         }
         else
