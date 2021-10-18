@@ -161,6 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5727099821873114436}
   - component: {fileID: 5727099821873114437}
+  - component: {fileID: 6587286846274932333}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -218,6 +219,19 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 5727099822272553048}
+--- !u!114 &6587286846274932333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5727099821873114439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abaefd7375dd03479cd33ba3b85b885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cineCam: {fileID: 0}
 --- !u!1 &5727099822272553051
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +244,7 @@ GameObject:
   - component: {fileID: 5727099822272553031}
   - component: {fileID: 5727099822272553030}
   - component: {fileID: 5727099822272553049}
+  - component: {fileID: 2561675231475486610}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -312,6 +327,23 @@ MonoBehaviour:
   m_YawDamping: 1
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &2561675231475486610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5727099822272553051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: -283.60474, y: 599.7505, z: 17.51361}
 --- !u!1 &7278044618485209739
 GameObject:
   m_ObjectHideFlags: 0

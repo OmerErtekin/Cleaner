@@ -7,6 +7,7 @@ public class Puncher : MonoBehaviour
     public int hitDirection = 0;
     private StickMovement movementScript;
     private DustController dustScript;
+    private CameraShaker shaker;
     public int direction = 0;
     private bool isHit = false;
     private float lastChangeTime = 0;
@@ -15,6 +16,7 @@ public class Puncher : MonoBehaviour
     {
         movementScript = StickMovement.movementScript;
         dustScript = DustController.dustControllerScript;
+        shaker = CameraShaker.shaker;
     }
 
     void Update()
@@ -28,6 +30,7 @@ public class Puncher : MonoBehaviour
         if((other.gameObject.CompareTag("Stick") || other.gameObject.CompareTag("DustBlock")) && !isHit && direction == 1)
         {
             isHit = true;
+            shaker.CameraShake(3);
             if (hitDirection == 1)
                 StartCoroutine(movementScript.TakePunch(1));
             else if (hitDirection == -1)

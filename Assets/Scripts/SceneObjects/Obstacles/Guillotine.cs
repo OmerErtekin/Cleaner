@@ -5,11 +5,13 @@ using UnityEngine;
 public class Guillotine : MonoBehaviour
 {
     private DustController dustScript;
+    private CameraShaker shaker;
     private bool isCut = false,isGoingDown = false;
     private float lastChangeTime = 0;
     public GameObject bladeObject;
     void Start()
     {
+        shaker = CameraShaker.shaker;
         dustScript = DustController.dustControllerScript;
     }
 
@@ -27,7 +29,7 @@ public class Guillotine : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Stick"))
         {
-            Debug.Log("salla");
+            shaker.CameraShake(3);
         }
     }
 
