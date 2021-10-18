@@ -30,7 +30,7 @@ public class Puncher : MonoBehaviour
         if((other.gameObject.CompareTag("Stick") || other.gameObject.CompareTag("DustBlock")) && !isHit && direction == 1)
         {
             isHit = true;
-            shaker.CameraShake(3);
+            shaker.CameraShake(5);
             if (hitDirection == 1)
                 StartCoroutine(movementScript.TakePunch(1));
             else if (hitDirection == -1)
@@ -41,6 +41,7 @@ public class Puncher : MonoBehaviour
 
     void SetTimer()
     {
+        transform.Rotate(90 * Time.deltaTime, 0, 0);
         if(Time.time > lastChangeTime)
         {
             if(direction == 0)

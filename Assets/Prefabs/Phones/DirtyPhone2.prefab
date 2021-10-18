@@ -127,6 +127,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6456105636955149765}
     m_Modifications:
+    - target: {fileID: 3180695831692495108, guid: 49b6ddf4c10aaf04c89a4f2358eba28a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 6806368036607877290, guid: 49b6ddf4c10aaf04c89a4f2358eba28a, type: 3}
       propertyPath: m_Name
       value: Dirt2 (1)
@@ -261,6 +265,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2584947334964356350, guid: 9c8b7a3286e949f44ab8677c82660f7c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8b7a3286e949f44ab8677c82660f7c, type: 3}
 --- !u!4 &600222035093451362 stripped
@@ -275,6 +283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6456105636955149765}
     m_Modifications:
+    - target: {fileID: 4296697274181648, guid: 58e10fd81b0cbf04bac5fb356f9a1fb9, type: 3}
+      propertyPath: m_Size.x
+      value: 0.19
+      objectReference: {fileID: 0}
     - target: {fileID: 2788364144747017338, guid: 58e10fd81b0cbf04bac5fb356f9a1fb9, type: 3}
       propertyPath: m_Name
       value: Dirt5 (1)
@@ -408,6 +420,10 @@ PrefabInstance:
     - target: {fileID: 3375283362155502607, guid: e25864466ed5feb4f9769e8e06f54985, type: 3}
       propertyPath: m_Name
       value: Dirt3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643506082782594646, guid: e25864466ed5feb4f9769e8e06f54985, type: 3}
+      propertyPath: m_Size.x
+      value: 0.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e25864466ed5feb4f9769e8e06f54985, type: 3}

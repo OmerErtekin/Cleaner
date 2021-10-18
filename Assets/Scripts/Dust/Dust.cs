@@ -31,7 +31,6 @@ public class Dust : MonoBehaviour
         dustControllerScipt.AddDust();
         Destroy(GetComponent<Collider>());
         yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
         transform.parent = dustControllerScipt.dustStartPosition.GetChild(dustControllerScipt.dustCount-1);
     }
     void MoveToStick()

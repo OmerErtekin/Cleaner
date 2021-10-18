@@ -17,7 +17,7 @@ public class Glue : MonoBehaviour
         //A glue remove the dust block that it collided. If there isn't any block, than game will be over.
         if(other.gameObject.CompareTag("DustBlock"))
         {
-             dustControllerScript.RemoveDust();
+            dustControllerScript.RemoveDust();
         }
         if(other.gameObject.CompareTag("Stick"))
         {

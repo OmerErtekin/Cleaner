@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dirt3
       objectReference: {fileID: 0}
+    - target: {fileID: 8643506082782594646, guid: e25864466ed5feb4f9769e8e06f54985, type: 3}
+      propertyPath: m_Size.x
+      value: 0.39
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e25864466ed5feb4f9769e8e06f54985, type: 3}
 --- !u!4 &2304214603983259679 stripped
@@ -201,6 +205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2432742723517931057}
     m_Modifications:
+    - target: {fileID: 1210578830607327178, guid: 08d5361d6b5eccd4eac58c6515c4d519, type: 3}
+      propertyPath: m_Size.x
+      value: 0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 2122329893616418827, guid: 08d5361d6b5eccd4eac58c6515c4d519, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -275,6 +283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2432742723517931057}
     m_Modifications:
+    - target: {fileID: 4296697274181648, guid: 58e10fd81b0cbf04bac5fb356f9a1fb9, type: 3}
+      propertyPath: m_Size.x
+      value: 0.28
+      objectReference: {fileID: 0}
     - target: {fileID: 2788364144747017338, guid: 58e10fd81b0cbf04bac5fb356f9a1fb9, type: 3}
       propertyPath: m_Name
       value: Dirt5
@@ -396,6 +408,14 @@ PrefabInstance:
     - target: {fileID: 2584947334964356347, guid: 9c8b7a3286e949f44ab8677c82660f7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584947334964356350, guid: 9c8b7a3286e949f44ab8677c82660f7c, type: 3}
+      propertyPath: m_Size.y
+      value: 3.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584947334964356350, guid: 9c8b7a3286e949f44ab8677c82660f7c, type: 3}
+      propertyPath: m_Size.z
+      value: 0.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8b7a3286e949f44ab8677c82660f7c, type: 3}

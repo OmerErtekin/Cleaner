@@ -58,7 +58,15 @@ public class DustController : MonoBehaviour
         if(dustCount == 0)
             return;
 
-        DropVisualPart();
+        try
+        {
+            DropVisualPart();
+        }
+        catch
+        {
+
+        }
+
         Destroy(dustStartPosition.GetChild(dustStartPosition.childCount-1).gameObject);
         dustCount--;
     }
@@ -80,7 +88,7 @@ public class DustController : MonoBehaviour
             for (int i = 0; i < iterationCount; i++)
             {
                 RemoveDust();
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForEndOfFrame();
             }
         }
         else
