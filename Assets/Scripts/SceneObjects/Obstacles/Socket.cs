@@ -5,12 +5,10 @@ using UnityEngine;
 public class Socket : MonoBehaviour
 {
     private DustController dustScript;
-    private GameManager managerScript;
     private bool isShocked = false;
     public GameObject shockEffect;
     void Start()
     {
-        managerScript = GameManager.managerScript;
         dustScript = DustController.dustControllerScript;
     }
 

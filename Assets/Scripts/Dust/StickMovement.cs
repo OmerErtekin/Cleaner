@@ -7,7 +7,8 @@ public class StickMovement : MonoBehaviour
 {
     public bool isCameToFinish = false, isGameFinished = false, isGameStarted = false, isCollidingWithPhone = false;
     public PathCreator pathScript;
-    private float lastFrameFingerPositionX, moveFactorX, distanceTravelled;
+    private float lastFrameFingerPositionX, moveFactorX, distanceTravelled,punchDirection = 0;
+    private bool isPunchTaken = false;
     public float swerveSpeed = 50, maxSwerveAmount = 10,movementSpeed = 10;
     private GameObject stickObject;
     private Rigidbody stickRb;
@@ -30,9 +31,27 @@ public class StickMovement : MonoBehaviour
         FinishMove();
         DecreaseSpeed();
         CatchTheParent();
+        PunchMovement();
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            StartCoroutine(TakePunch(1));
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            StartCoroutine(TakePunch(-1));
+        }
     }
 
+    public IEnumerator TakePunch(int direction)
+    {
+        if (isPunchTaken)
+            yield break;
 
+        punchDirection = direction;
+        isPunchTaken = true;
+        yield return new WaitForSeconds(0.25f);
+        isPunchTaken = false;
+    }
     void HandleInput()
     {
         //Precise a point to start the swerve movement
@@ -91,6 +110,7 @@ public class StickMovement : MonoBehaviour
 
     }
 
+
     void DecreaseSpeed()
     {
         //Changing speed at finish for smoother experience
@@ -98,6 +118,17 @@ public class StickMovement : MonoBehaviour
         {
             movementSpeed = Mathf.Lerp(movementSpeed, 0, 3 * Time.deltaTime);
             stickRb.velocity = (movementSpeed * transform.forward);
+        }
+    }
+
+    void PunchMovement()
+    {
+        if (!isPunchTaken)
+            return;
+
+        if((punchDirection == 1 && stickObject.transform.localPosition.x < 1.5f) || (punchDirection == -1 && stickObject.transform.localPosition.x > -1.5f))
+        {
+            stickObject.transform.localPosition += new Vector3(25 * punchDirection * Time.deltaTime,0,0);
         }
     }
 

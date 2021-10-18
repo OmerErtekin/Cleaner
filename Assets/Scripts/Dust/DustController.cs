@@ -43,7 +43,7 @@ public class DustController : MonoBehaviour
         Destroy(visualPart.GetComponent<Dust>());
         visualPart.transform.parent = null;
         visualPart.tag = "Untagged";
-        visualPart.AddComponent<Rigidbody>().AddForce(0, 0, -200);
+        visualPart.AddComponent<Rigidbody>();
         visualPart.AddComponent<BoxCollider>();
         Destroy(visualPart, 5);
     }
@@ -55,6 +55,9 @@ public class DustController : MonoBehaviour
     public void RemoveDust()
     {
         //First, remove the visual part, after destroy the pyhsical part.
+        if(dustCount == 0)
+            return;
+
         DropVisualPart();
         Destroy(dustStartPosition.GetChild(dustStartPosition.childCount-1).gameObject);
         dustCount--;
