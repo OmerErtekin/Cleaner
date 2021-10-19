@@ -22,7 +22,12 @@ public class Finish : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("DustBlock") || other.gameObject.CompareTag("Stick"))
+        if(other.gameObject.CompareTag("Stick") && dustScript.dustCount == 0 && !isCame)
+        {
+            isCame = false;
+            managerScript.FinishTheGame();
+        }
+        if (other.gameObject.CompareTag("DustBlock") && !isCame)
         {
             isCame = true;
             movementScript.isCameToFinish = true;
